@@ -1,6 +1,6 @@
 name: decimal_type
 description: A Decimal type for your Dart and Flutter projects.
-version: 0.0.1
+version: 0.0.2
 repository: https://github.com/maxbritto/decimal_type
 
 environment:

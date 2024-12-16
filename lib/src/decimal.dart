@@ -54,11 +54,16 @@ class Decimal implements Comparable<Decimal> {
     final stringValue = _value.abs().toString();
     final prefix = _value.isNegative ? '-' : '';
     final length = stringValue.length;
+    final String rawString;
     if (length <= decimalPrecision) {
-      return '${prefix}0.${'0' * (decimalPrecision - length)}$stringValue';
+      rawString = '${prefix}0.${'0' * (decimalPrecision - length)}$stringValue';
+    } else {
+      rawString =
+          '$prefix${stringValue.substring(0, length - decimalPrecision)}.${stringValue.substring(length - decimalPrecision)}';
     }
-
-    return '$prefix${stringValue.substring(0, length - decimalPrecision)}.${stringValue.substring(length - decimalPrecision)}';
+    return rawString
+        .replaceAll(RegExp(r'0+$'), '')
+        .replaceAll(RegExp(r'\.$'), '');
   }
 
   Decimal operator +(Decimal other) {

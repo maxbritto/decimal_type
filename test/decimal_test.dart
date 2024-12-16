@@ -2,7 +2,7 @@ import 'package:decimal_type/decimal_type.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('PrecisionNumber', () {
+  group('Decimal', () {
     group("Parse from String", () {
       test('Parse from String empty value', () {
         expect(Decimal.fromString('').toString(), '0');
@@ -346,6 +346,19 @@ void main() {
             Decimal.fromDouble(50.10, decimalPrecision: 1) /
                 Decimal.fromDouble(2.11, decimalPrecision: 2),
             Decimal.fromString("23.74407582938388472371"));
+      });
+    });
+
+    group("toString", () {
+      test('toString with extra trailing zeros', () {
+        expect(Decimal.fromDouble(123.45, decimalPrecision: 3).toString(),
+            '123.45');
+        expect(Decimal.fromDouble(-123.45, decimalPrecision: 3).toString(),
+            '-123.45');
+        expect(Decimal.fromDouble(123.405, decimalPrecision: 3).toString(),
+            '123.405');
+        expect(
+            Decimal.fromDouble(123.000, decimalPrecision: 3).toString(), '123');
       });
     });
   });
