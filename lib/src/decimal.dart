@@ -4,6 +4,9 @@ class Decimal implements Comparable<Decimal> {
 
   const Decimal(this._value, {required this.decimalPrecision});
 
+  /// Create a Decimal inititalized to zero
+  Decimal.zero() : this(BigInt.zero, decimalPrecision: 0);
+
   /// Create a Decimal from an integer value
   factory Decimal.fromInt(int value) {
     return Decimal(BigInt.from(value), decimalPrecision: 0);
