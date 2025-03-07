@@ -361,5 +361,18 @@ void main() {
             Decimal.fromDouble(123.000, decimalPrecision: 3).toString(), '123');
       });
     });
+
+    group("toDouble", () {
+      test('toDouble', () {
+        expect(
+            Decimal.fromDouble(123.45, decimalPrecision: 3).toDouble(), 123.45);
+        expect(Decimal.fromDouble(-123.45, decimalPrecision: 3).toDouble(),
+            -123.45);
+        expect(Decimal.fromDouble(123.405, decimalPrecision: 3).toDouble(),
+            123.405);
+        expect(
+            Decimal.fromDouble(123.000, decimalPrecision: 3).toDouble(), 123);
+      });
+    });
   });
 }

@@ -46,6 +46,13 @@ class Decimal implements Comparable<Decimal> {
     return Decimal.fromString(stringValue);
   }
 
+  /// Convert the Decimal to a double.
+  /// This should be used with caution, only as a final step before displaying or storing the value.
+  /// Remain in the Decimal type as much as possible when performing calculations.
+  double toDouble() {
+    return double.parse(toString());
+  }
+
   @override
   String toString() {
     if (decimalPrecision == 0) {
